@@ -3,7 +3,7 @@ var startBtn = document.getElementById("startTimer");
 var stopBtn = document.getElementById("stopTimer");
 var resetBtn = document.getElementById("resetTimer");
 
-var milliSeconds = 0;
+var seconds = 0;
 var interval = null;
 
 startBtn.addEventListener("click", start);
@@ -11,25 +11,25 @@ stopBtn.addEventListener("click", stop);
 resetBtn.addEventListener("click", reset);
 
 function timer(){
-  milliSeconds++;
+  seconds++;
 
-  var mins = Math.floor((milliSeconds/6000));
-  var secs =Math.floor((milliSeconds-(mins * 6000))/100);
-  var ms = ((milliSeconds % 100)-1) ;
+  var hrs = Math.floor((seconds/3600));
+  var mins =Math.floor((seconds-(hrs * 3600))/60);
+  var secs = ((seconds % 60)) ;
 
-  if (ms < 10) {
-    ms = "0" + ms;
-  }
   if (secs < 10) {
     secs = "0" + secs;
   }
   if (mins < 10) {
     mins = "0" + mins;
   }
+  if (hrs < 10) {
+    hrs = "0" + hrs;
+  }
 
 
 
-time.innerText = `${mins}:${secs}:${ms}`;
+time.innerText = `${hrs}:${mins}:${secs}`;
 
 }
 
@@ -38,7 +38,7 @@ function start(){
   if (interval) {
     return
   }
-  interval = setInterval(timer, 10);
+  interval = setInterval(timer, 1000);
 
 }
 
@@ -49,6 +49,6 @@ function stop(){
 
 function reset(){
   stop();
-  milliSeconds=0;
+  seconds=0;
   time.innerText ="00:00:00";
 }

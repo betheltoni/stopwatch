@@ -1,3 +1,9 @@
+@media 0nly screen and (max-width:800px) {
+  body{
+    width: auto;
+  }
+}
+
 body{
   background-color: black;
   color: #b6b8b9;
